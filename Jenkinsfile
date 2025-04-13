@@ -1,12 +1,15 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
+    agent {
+        docker {
+            image 'python:3'   // Official image that has Python 3 pre-installed
+            args '-u root'     // Run as root to allow pip install
+        }
+    }
+
     triggers {
         pollSCM '* * * * *'
     }
+
     stages {
         stage('Build') {
             steps {
@@ -17,16 +20,18 @@ pipeline {
                 '''
             }
         }
+
         stage('Test') {
             steps {
                 echo "Testing.."
                 sh '''
                 cd myapp
-                python3 hello.py
-                python3 hello.py --name=Alex
+                python hello.py
+                python hello.py --name=Alex
                 '''
             }
         }
+
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
