@@ -74,8 +74,3 @@ docker run -d \
 
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' docker-socat
 ```
-
-## Using my Jenkins Python Agent
-```
-docker pull devopsjourney1/myjenkinsagents:python
-```
