@@ -10,7 +10,7 @@ docker build -t myjenkins-blueocean:2.414.2 .
 docker network create jenkins
 ```
 
-## Run the Container
+## Run the Container now
 ### MacOS / Linux
 ```
 docker run --name jenkins-blueocean --restart=on-failure --detach \
