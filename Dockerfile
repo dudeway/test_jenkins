@@ -1,6 +1,7 @@
 FROM jenkins/jenkins:2.440.1-lts
 USER root
-RUN apt-get update && apt-get install -y lsb-release python3-pip
+RUN apt-get update && apt-get install -y python3 python3-pip lsb-release
+RUN python3 --version
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) \
